@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+
+    <Properties>
+        <Property name="basePath">./logs</Property>
+    </Properties>
+
+	<appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS}; - (%F:%L) - [%t] - %M: %msg%n" />
+		</Console>
+
+		<RollingFile name="fileLogger"
+			fileName="${basePath}/idrRestartScheduler.log"
+			filePattern="${basePath}/idrRestartScheduler-%d{yyyy-MM-dd}.log">
+			<PatternLayout
+				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS}; - (%F:%L) - [%t] - %M: %msg%n" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="5" />
+		</RollingFile>
+	</appenders>
+
+	<loggers>
+		<logger name="co.com.bancolombia.gestion.idr" level="TRACE"
+			additivity="false">
+			<appender-ref ref="console" />
+			<appender-ref ref="fileLogger" />
+		</logger>
+		<logger name="org.quartz" level="WARN" additivity="false">
+			<appender-ref ref="fileLogger" />
+		</logger>
+		<root level="TRACE">
+			<appender-ref ref="console" />
+			<appender-ref ref="fileLogger" />
+		</root>
+	</loggers>
+</Configuration>

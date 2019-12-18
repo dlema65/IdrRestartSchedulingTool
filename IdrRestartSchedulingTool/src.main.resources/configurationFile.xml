@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+    <accessServer>localhost</accessServer>
+    <port>10101</port>
+    <userId>cdcadmin</userId>
+    <password>rDJ39M1sFctUhwIJwGYV5JHRXwmppQs9zSHbPGqJLbo=</password>
+    <subscriptions>
+        <subscription subscriptionId="CON_UE_FNC">
+            <subscriptionName>CON_UE_FNC</subscriptionName>
+            <sourceDataStore>FUENTE</sourceDataStore>
+            <cronPattern>0 0/1 * ? * * *</cronPattern>
+            <loaderClass>com.demo.management.idr.scheduler.SimpleSubscriptionStarter</loaderClass>
+            <enabled>true</enabled>
+        </subscription>
+
+    </subscriptions>
+</configuration>
